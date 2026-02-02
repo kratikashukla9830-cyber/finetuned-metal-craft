@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Railings from "./pages/products/Railings";
 import NamePlates from "./pages/products/NamePlates";
 import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/products/railings" element={<Railings />} />
           <Route path="/products/nameplates" element={<NamePlates />} />
           <Route path="/contact" element={<Contact />} />
