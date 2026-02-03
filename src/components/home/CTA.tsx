@@ -28,13 +28,13 @@ export function CTA() {
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button variant="hero" size="xl" asChild>
-                  <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/919303311384" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="h-5 w-5" />
                     WhatsApp Us
                   </a>
                 </Button>
                 <Button variant="heroOutline" size="xl" asChild>
-                  <a href="tel:+91XXXXXXXXXX">
+                  <a href="tel:+919303311384">
                     <Phone className="h-5 w-5" />
                     Call Now
                   </a>
