@@ -93,7 +93,7 @@ export default function Checkout() {
     }
 
     try {
-      const orderResponse = await fetch("http://localhost:5000/api/payments/checkout", {
+      const orderResponse = await fetch(import.meta.env.VITE_API_URL + "/api/payments/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -136,7 +136,7 @@ export default function Checkout() {
         // 4. Handle successful payment
         handler: async function (response: any) {
           try {
-            const verifyResponse = await fetch("http://localhost:5000/api/payments/verify", {
+            const verifyResponse = await fetch(import.meta.env.VITE_API_URL + "/api/payments/verify", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({

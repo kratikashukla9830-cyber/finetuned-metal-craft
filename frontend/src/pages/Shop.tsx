@@ -15,7 +15,7 @@ export default function Shop() {
     const fetchProducts = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("http://localhost:5000/api/products");
+        const response = await fetch(import.meta.env.VITE_API_URL + "/api/products");
         const result = await response.json();
 
         if (result.success) {
