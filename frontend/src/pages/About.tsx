@@ -3,11 +3,11 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/common/ScrollReveal";
-import { 
-  CheckCircle2, 
-  ArrowRight, 
-  Users, 
-  Target, 
+import {
+  CheckCircle2,
+  ArrowRight,
+  Users,
+  Target,
   Eye,
   Wrench,
   Clock,
@@ -119,37 +119,33 @@ export default function About() {
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Founded in Satna, Madhya Pradesh, ASDE LaserCuttings (Agrawal & Son 
-                    Daughter Enterprises) began with a simple philosophy: <strong className="text-foreground">never 
-                    compromise on quality</strong>. What started as a family workshop has grown 
+                    Founded in Satna, Madhya Pradesh, ASDE LaserCuttings (Agrawal & Son
+                    Daughter Enterprises) began with a simple philosophy: <strong className="text-foreground">never
+                      compromise on quality</strong>. What started as a family workshop has grown
                     into one of Central India's most trusted names in precision CNC laser cutting.
                   </p>
                   <p>
-                    The name "Son Daughter" reflects our inclusive family values—everyone in 
-                    the family contributes, and everyone's work matters equally. This philosophy 
-                    extends to our team and our customers: every project, large or small, receives 
+                    The name "Son Daughter" reflects our inclusive family values—everyone in
+                    the family contributes, and everyone's work matters equally. This philosophy
+                    extends to our team and our customers: every project, large or small, receives
                     the same attention to detail and commitment to excellence.
                   </p>
                 </div>
               </div>
             </ScrollReveal>
             <ScrollReveal animation="fade-left" delay={0.2}>
-              <div className="relative">
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-secondary to-muted flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="h-24 w-24 mx-auto rounded-2xl gradient-gold flex items-center justify-center mb-6">
-                      <Users className="h-12 w-12 text-accent-foreground" />
-                    </div>
-                    <p className="text-xl font-bold text-foreground">Family-Owned</p>
-                    <p className="text-muted-foreground">Since Day One</p>
-                  </div>
-                </div>
-                <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-xl gradient-gold flex items-center justify-center">
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-accent-foreground">50K+</p>
-                    <p className="text-xs text-accent-foreground/80">Customers</p>
-                  </div>
-                </div>
+              {/* Added rounded corners and overflow-hidden for a clean look, optional */}
+              <div className="relative rounded-xl aspect-video overflow-hidden shadow-lg">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-auto object-cover"
+                >
+                  <source src="/videos/machine.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </ScrollReveal>
           </div>
@@ -168,7 +164,7 @@ export default function About() {
                 Quality is Not Expensive – It's Priceless
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                While others race to deliver quickly by cutting corners, we invest time 
+                While others race to deliver quickly by cutting corners, we invest time
                 in the one step that makes all the difference: finishing.
               </p>
             </ScrollReveal>
@@ -326,12 +322,12 @@ export default function About() {
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Our 5,000+ square foot facility in Satna houses advanced CNC laser 
-                    cutting machines, precision equipment (accurate to 0.1mm), dedicated 
+                    Our 5,000+ square foot facility in Satna houses advanced CNC laser
+                    cutting machines, precision equipment (accurate to 0.1mm), dedicated
                     finishing workshop, and quality control area.
                   </p>
                   <p>
-                    We've invested in technology to ensure precision, but we've kept the 
+                    We've invested in technology to ensure precision, but we've kept the
                     human touch where it matters most: in finishing and quality inspection.
                   </p>
                 </div>
