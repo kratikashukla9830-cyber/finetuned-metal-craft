@@ -94,6 +94,7 @@ export default function ManageProducts() {
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formProduct) return;
+    if(saving) return;
 
     try {
       setSaving(true);
