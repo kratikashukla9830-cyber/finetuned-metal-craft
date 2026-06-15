@@ -31,5 +31,5 @@
   },
   "include": [
     "src"
-  ]
+, "../admin/src/components/admin", "../admin/src/pages/admin", "../admin/src/contexts/AuthContext.tsx"  ]
 }
