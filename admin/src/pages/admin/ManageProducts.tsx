@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { productAPI, Product } from "@/lib/api-services";
-import { useToast } from "@/components/ui/use-toast";
+import { Button } from "../../components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/table";
+import { productAPI, Product } from "../../lib/api-services";
+import { toast } from "sonner";
 
 declare global {
   interface Window {
@@ -25,7 +25,6 @@ export default function ManageProducts() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [formProduct, setFormProduct] = useState<Product | Omit<Product, "_id"> | null>(null);
-  const { toast } = useToast();
 
   useEffect(() => {
     fetchProducts();
@@ -38,15 +37,19 @@ export default function ManageProducts() {
       setProducts(fetchedProducts);
     } catch (error) {
       console.error('Failed to fetch products:', error);
-      toast({
-        title: 'Error',
-        description: 'Failed to load products',
-        variant: 'destructive',
-      });
+      toast.error('Failed to load products');
     } finally {
       setLoading(false);
     }
   };
+
+  if(loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <span className="text-gray-500 text-lg">Loading products...</span>
+      </div>
+    );
+  }
 
   const openCloudinaryWidget = () => {
     const widget = window.cloudinary.createUploadWidget(
@@ -77,17 +80,10 @@ export default function ManageProducts() {
     try {
       await productAPI.deleteProduct(id);
       setProducts((prev) => prev.filter((p) => p._id !== id));
-      toast({
-        title: 'Success',
-        description: 'Product deleted successfully',
-      });
+      toast.success('Product deleted successfully');
     } catch (error) {
       console.error('Failed to delete product:', error);
-      toast({
-        title: 'Error',
-        description: 'Failed to delete product',
-        variant: 'destructive',
-      });
+      toast.error('Failed to delete product');
     }
   };
 
@@ -108,30 +104,20 @@ export default function ManageProducts() {
         setProducts((prev) =>
           prev.map((p) => (p._id === formProduct._id ? updatedProduct : p))
         );
-        toast({
-          title: 'Success',
-          description: 'Product updated successfully',
-        });
+        toast.success('Product updated successfully');
       } else {
         // Create new product
         const newProduct = await productAPI.createProduct(
           formProduct as Omit<Product, "_id">
         );
         setProducts((prev) => [newProduct, ...prev]);
-        toast({
-          title: 'Success',
-          description: 'Product created successfully',
-        });
+        toast.success('Product created successfully');
       }
 
       setFormProduct(null);
     } catch (error) {
       console.error('Failed to save product:', error);
-      toast({
-        title: 'Error',
-        description: 'Failed to save product',
-        variant: 'destructive',
-      });
+      toast.error('Failed to save product');
     } finally {
       setSaving(false);
     }
@@ -141,12 +127,12 @@ export default function ManageProducts() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">Manage Products</h1>
-        <Button onClick={() => setFormProduct(EMPTY_PRODUCT)}>
+        <Button className="bg-[#E4A143] hover:bg-[#D29D5B] text-white rounded-xl" onClick={() => setFormProduct(EMPTY_PRODUCT)}>
           Add New Product
         </Button>
       </div>
 
-      <div className="bg-white rounded-md shadow border overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.05)] border-none p-6 overflow-hidden">
         <Table>
           <TableHeader>
             <TableRow>
@@ -174,10 +160,10 @@ export default function ManageProducts() {
                   </span>
                 </TableCell>
                 <TableCell className="text-right">
-                  <Button variant="outline" size="sm" className="mr-2" onClick={() => setFormProduct({ ...product })}>
+                  <Button className="bg-[#ffffff] hover:bg-[#E4A143] hover:text-white rounded-xl mr-3" variant="outline" size="sm" onClick={() => setFormProduct({ ...product })}>
                     Edit
                   </Button>
-                  <Button variant="destructive" size="sm" onClick={() => handleDelete(product._id)}>
+                  <Button className="bg-[#E4A143] hover:bg-[#D29D5B] text-white rounded-xl" variant="destructive" size="sm" onClick={() => handleDelete(product._id)}>
                     Delete
                   </Button>
                 </TableCell>
@@ -277,6 +263,7 @@ export default function ManageProducts() {
 
                   <Button
                     type="button"
+                    className="bg-[#E4A143] hover:bg-[#D29D5B] text-white rounded-xl"
                     variant="outline"
                     onClick={openCloudinaryWidget}
                   >
@@ -286,10 +273,10 @@ export default function ManageProducts() {
               </div>
 
               <div className="flex justify-end gap-2 pt-4">
-                <Button type="button" variant="outline" onClick={() => setFormProduct(null)}>
+                <Button type="button" variant="outline" className="bg-[#E4A143] hover:bg-[#D29D5B] text-white rounded-xl" onClick={() => setFormProduct(null)}>
                   Cancel
                 </Button>
-                <Button type="submit">
+                <Button type="submit" className="bg-[#E4A143] hover:bg-[#D29D5B] text-white rounded-xl">
                   {"_id" in formProduct ? "Update Product" : "Create Product"}
                 </Button>
               </div>

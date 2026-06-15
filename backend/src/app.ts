@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import orderRoutes from "./routes/orderRoutes";
 import paymentRoutes from "./routes/paymentRoutes";
 import productRoutes from "./routes/productRoutes";
+import authRoutes from "./routes/authRoutes";
 
 dotenv.config();
 
@@ -35,5 +36,6 @@ app.get("/health", (req: Request, res: Response) => {
 app.use('/api/payments', paymentRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);
 
 export default app;

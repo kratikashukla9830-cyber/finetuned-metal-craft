@@ -15,6 +15,10 @@ export const createRazorpayOrder = async (orderData: any) => {
 
   const newDbOrder = await orderService.createCheckoutOrder(orderData, razorpayOrder.id);
 
+  if (!newDbOrder) {
+    throw new Error('Failed to create order in database');
+  }
+
   return {
     razorpayOrder,
     dbOrderId: newDbOrder._id
