@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-export const  = async (to: string, subject: string, text: string, html: string) => {
+export const sendEmail = async (to: string, subject: string, text: string, html: string) => {
     try {
         await transporter.sendMail({
             from: `"Admin Portal" <${process.env.SMTP_USER}>`,
