@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { generateAndSendOtp, verifyPassword } from '../services/authService';
+import { verifyPassword } from '../services/authService';
 import { clearUserOtp, getUserByEmail, getUserById } from '../services/userService';
-import { generateToken } from '../services/tokenService';
+// import { generateToken } from '../services/tokenService';
 
 export const login = async (req: Request, res: Response) => {
   try {
