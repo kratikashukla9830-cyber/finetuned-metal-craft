@@ -7,6 +7,10 @@ const transporter = nodemailer.createTransport({
     connectionTimeout: 20000, // 20 seconds
     greetingTimeout: 20000,
     socketTimeout: 20000,
+    auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+    },
     tls: {
         rejectUnauthorized: false // Helps prevent local/Render certificate issues
     }
