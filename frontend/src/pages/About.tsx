@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,6 +19,7 @@ import {
   BadgeCheck,
   Award
 } from "lucide-react";
+import { useEffect } from "react";
 
 const values = [
   {
@@ -70,6 +71,22 @@ const commitments = [
 ];
 
 export default function About() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      // Find the element by the hash id (e.g., #hero -> hero)
+      const element = document.getElementById(hash.replace("#", ""));
+      if (element) {
+        // Scroll to the element smoothly
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If no hash is present, default to scrolling to the top of the page
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
+  }, [hash]);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -251,19 +268,12 @@ export default function About() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <ScrollReveal animation="fade-right" className="order-2 lg:order-1">
-              <div className="aspect-video rounded-2xl bg-gradient-to-br from-secondary to-muted flex items-center justify-center">
-                <div className="relative rounded-xl aspect-video overflow-hidden shadow-lg">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-auto object-cover"
-                  >
-                    <source src="/videos/machine.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
+              <div className="aspect-[4/3] rounded-xl overflow-hidden bg-muted">
+                <img 
+                  src="/images/about2.jpeg" 
+                  alt="Decorative metal gate" 
+                  className="w-full h-full object-cover" 
+                />
               </div>
             </ScrollReveal>
             <ScrollReveal animation="fade-left" delay={0.2} className="order-1 lg:order-2">

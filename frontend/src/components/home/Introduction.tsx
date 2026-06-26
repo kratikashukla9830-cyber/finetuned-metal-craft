@@ -9,7 +9,7 @@ const quickLinks = [
     icon: Package,
     title: "What We Make",
     description: "Precision-laser cut metal solutions for every space",
-    href: "/products",
+    href: "/products#hero",
     cta: "Explore Products",
   },
   {

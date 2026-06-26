@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/common/ScrollReveal";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { useEffect } from "react";
 
 const products = [
   {
@@ -63,10 +64,26 @@ const products = [
 ];
 
 export default function Products() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      // Find the element by the hash id (e.g., #hero -> hero)
+      const element = document.getElementById(hash.replace("#", ""));
+      if (element) {
+        // Scroll to the element smoothly
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If no hash is present, default to scrolling to the top of the page
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
+  }, [hash]);
+  
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative py-24 lg:py-32 gradient-hero overflow-hidden">
+      <section id="hero" className="relative py-24 lg:py-32 gradient-hero overflow-hidden">
         <div
           className="absolute inset-0 z-0 bg-[url('/images/whatwemake.jpeg')] bg-cover bg-center bg-no-repeat opacity-50"
           aria-hidden="true"
