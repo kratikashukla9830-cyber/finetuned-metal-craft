@@ -32,7 +32,7 @@ export function ValueProposition() {
 
           <ScrollReveal animation="fade-up" delay={0.3}>
             <Button variant="gold" size="lg" asChild>
-              <Link to="/gallery">
+              <Link to="/gallery#hero">
                 View Our Portfolio
                 <ArrowRight className="h-4 w-4" />
               </Link>

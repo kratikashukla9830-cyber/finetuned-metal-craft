@@ -12,12 +12,16 @@ import elevationFloral from "@/assets/gallery/elevation-floral.png";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 
 const showcaseImages = [
-  { src: railingGeometric1, alt: "Geometric laser cut railing", category: "Railings" },
-  { src: railingGeometric2, alt: "Triangle pattern staircase", category: "Railings" },
-  { src: railingWoodMetal, alt: "Wood and metal railing", category: "Railings" },
-  { src: elevationOrganic, alt: "Organic pattern elevation", category: "Elevation" },
-  { src: elevationFloral, alt: "Floral geometric elevation", category: "Elevation" },
-  { src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", alt: "Brass name plate", category: "Name Plates" },
+  { src: "/images/product1.jpeg", alt: "Geometric laser cut railing"},
+  { src: "/images/product2.jpeg", alt: "Geometric laser cut railing"},
+  { src: "/images/product3.jpeg", alt: "Geometric laser cut railing"},
+  { src: "/images/product4.jpeg", alt: "Geometric laser cut railing"},
+  { src: "/images/product5.jpeg", alt: "Geometric laser cut railing"},
+  { src: "/images/product6.jpeg", alt: "Geometric laser cut railing"},
+  { src: "/images/product7.jpeg", alt: "Geometric laser cut railing"},
+  { src: "/images/product8.jpeg", alt: "Geometric laser cut railing"},
+  { src: "/images/product9.jpeg", alt: "Geometric laser cut railing"},
+  { src: "/images/product10.jpeg", alt: "Geometric laser cut railing"},
 ];
 
 export function ProductShowcase() {

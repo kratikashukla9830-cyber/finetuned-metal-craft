@@ -10,14 +10,12 @@ export function OurStory() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image placeholder */}
           <ScrollReveal animation="fade-right">
-            <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-secondary to-muted flex items-center justify-center overflow-hidden">
-              <div className="text-center p-8">
-                <div className="h-24 w-24 mx-auto rounded-2xl gradient-gold flex items-center justify-center mb-6">
-                  <span className="text-4xl font-bold text-accent-foreground">A</span>
-                </div>
-                <p className="text-xl font-bold text-foreground">Family-Owned</p>
-                <p className="text-muted-foreground">Since Day One</p>
-              </div>
+            <div className="aspect-[4/3] rounded-xl overflow-hidden bg-muted">
+              <img
+                src="/images/home.jpeg"
+                alt="Decorative metal gate"
+                className="w-full h-full object-cover"
+              />
             </div>
           </ScrollReveal>
 
@@ -32,18 +30,18 @@ export function OurStory() {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Founded as a family workshop in Satna, ASDE LaserCuttings (Agrawal & Son Daughter 
-                  Enterprises) has grown from a small operation to Madhya Pradesh's premier CNC laser 
+                  Founded as a family workshop in Satna, ASDE LaserCuttings (Agrawal & Son Daughter
+                  Enterprises) has grown from a small operation to Madhya Pradesh's premier CNC laser
                   cutting specialist.
                 </p>
                 <p>
-                  What sets us apart isn't just our state-of-the-art equipment—it's our commitment 
-                  to the <strong className="text-foreground">finishing process that others skip</strong>. 
-                  Our signature 3-step finishing ensures every piece leaves our facility smooth, 
+                  What sets us apart isn't just our state-of-the-art equipment—it's our commitment
+                  to the <strong className="text-foreground">finishing process that others skip</strong>.
+                  Our signature 3-step finishing ensures every piece leaves our facility smooth,
                   safe, and installation-ready.
                 </p>
                 <p>
-                  The name "Son Daughter" reflects our inclusive family values—everyone's work 
+                  The name "Son Daughter" reflects our inclusive family values—everyone's work
                   matters equally, and every project receives the same dedication.
                 </p>
               </div>
