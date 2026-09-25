@@ -131,14 +131,16 @@ export function ProductShowcase() {
                       {showcaseImages[activeIndex].description}
                     </p>
                   </div>
-                  <button
+                  <Button
                     type="button"
+                    variant="ghost"
+                    size="icon"
                     aria-label={`View ${showcaseImages[activeIndex].title} image larger`}
                     onClick={() => openLightbox(activeIndex)}
                     className="shrink-0 inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary-foreground/25 bg-primary/60 text-primary-foreground transition-colors hover:border-gold hover:text-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     <Maximize2 className="h-4 w-4" />
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -149,12 +151,14 @@ export function ProductShowcase() {
               </p>
               <div className="grid grid-cols-1 gap-1">
                 {showcaseImages.map((item, index) => (
-                  <button
+                  <Button
                     key={item.title}
                     type="button"
+                    variant="ghost"
+                    size="default"
                     aria-pressed={activeIndex === index}
                     onClick={() => setActiveIndex(index)}
-                    className={`group flex min-h-14 items-center justify-between gap-3 border-l-2 px-3 py-3 text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary ${
+                    className={`group h-auto min-h-14 w-full justify-between rounded-none border-l-2 px-3 py-3 text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary ${
                       activeIndex === index
                         ? "border-gold bg-primary-foreground/[0.08] text-primary-foreground"
                         : "border-transparent text-primary-foreground/60 hover:border-gold/50 hover:bg-primary-foreground/[0.05] hover:text-primary-foreground"
@@ -165,7 +169,7 @@ export function ProductShowcase() {
                       <span className="text-sm font-semibold sm:text-base">{item.title}</span>
                     </span>
                     <ChevronRight className={`h-4 w-4 shrink-0 transition-transform duration-300 ${activeIndex === index ? "translate-x-1 text-gold" : "text-primary-foreground/30 group-hover:translate-x-1"}`} />
-                  </button>
+                  </Button>
                 ))}
               </div>
               <div className="mt-auto border-t border-primary-foreground/10 px-3 pt-5">
