@@ -38,30 +38,28 @@ function ProductTile({ image, imageIndex, featured, onOpen }: {
   onOpen: (index: number) => void;
 }) {
   return (
-    <article className={featured ? "w-full" : "w-full md:mt-16"}>
+    <article className={`group ${featured ? "w-full" : "w-full md:mt-16"}`}>
       <Button
         type="button"
         variant="ghost"
         aria-label={`View ${image.title}`}
         onClick={() => onOpen(imageIndex)}
-        className="group relative block h-auto w-full overflow-hidden rounded-none border border-border/70 bg-muted p-0 text-left shadow-soft hover:bg-transparent focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4"
+        className={`relative block h-auto w-full overflow-hidden rounded-none border border-border/70 bg-muted p-0 text-left shadow-soft hover:bg-transparent focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 ${featured ? "aspect-[4/5]" : "aspect-[3/4]"}`}
       >
-        <div className={featured ? "relative aspect-[4/5] w-full overflow-hidden" : "relative aspect-[3/4] w-full overflow-hidden"}>
-          <img
-            src={image.src}
-            alt={image.alt}
-            className="h-full w-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110"
-          />
-          <div className="absolute inset-0 bg-primary/15 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-background/90 text-foreground shadow-elevated backdrop-blur-sm transition-transform duration-700 group-hover:scale-100 scale-75">
-              <ZoomIn className="h-5 w-5 text-gold" />
-            </span>
-          </div>
-          <span className="absolute left-5 top-5 bg-primary px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary-foreground">
-            {String(imageIndex + 1).padStart(2, "0")}
+        <img
+          src={image.src}
+          alt={image.alt}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110"
+        />
+        <span className="absolute inset-0 bg-primary/15 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+        <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-background/90 text-foreground shadow-elevated backdrop-blur-sm transition-transform duration-700 group-hover:scale-100 scale-75">
+            <ZoomIn className="h-5 w-5 text-gold" />
           </span>
-        </div>
+        </span>
+        <span className="absolute left-5 top-5 bg-primary px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary-foreground">
+          {String(imageIndex + 1).padStart(2, "0")}
+        </span>
       </Button>
 
       <div className="mt-5 flex items-start justify-between gap-4 border-b border-border/70 pb-5">
@@ -165,10 +163,6 @@ export function ProductShowcase() {
             </CarouselContent>
           </ScrollReveal>
 
-          <div className="sr-only">
-            <CarouselPrevious />
-            <CarouselNext />
-          </div>
         </Carousel>
 
         <ScrollReveal animation="fade-up" className="mt-12 text-center md:mt-16">
