@@ -19,7 +19,7 @@ const showcaseImages = [
   { src: "/images/product10.jpeg", alt: "Contemporary laser cut railing", title: "Contemporary Laser Cut Railing", category: "Railings" },
 ];
 
-const showcaseSlides = showcaseImages.reduce<typeof showcaseImages[]>((slides, image, index) => {
+const showcaseSlides = showcaseImages.reduce<Array<Array<(typeof showcaseImages)[number]>>>((slides, image, index) => {
   if (index % 2 === 0) {
     slides.push([image]);
   } else {
@@ -111,7 +111,8 @@ export function ProductShowcase() {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-14 flex flex-col gap-8 md:mb-20 md:flex-row md:items-end md:justify-between">
+        <Carousel opts={{ align: "start", loop: true }} className="w-full group/carousel">
+          <div className="mb-14 flex flex-col gap-8 md:mb-20 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
             <ScrollReveal animation="fade-up">
               <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.42em] text-gold">
@@ -135,10 +136,9 @@ export function ProductShowcase() {
             <CarouselPrevious className="static h-12 w-12 translate-y-0 rounded-full border-border bg-transparent text-foreground shadow-none hover:bg-primary hover:text-primary-foreground disabled:opacity-40 md:h-14 md:w-14" />
             <CarouselNext className="static h-12 w-12 translate-y-0 rounded-full border-border bg-transparent text-foreground shadow-none hover:bg-primary hover:text-primary-foreground disabled:opacity-40 md:h-14 md:w-14" />
           </div>
-        </div>
+          </div>
 
-        <ScrollReveal animation="fade-right">
-          <Carousel opts={{ align: "start", loop: true }} className="group/carousel w-full">
+          <ScrollReveal animation="fade-right">
             <CarouselContent className="-ml-0">
               {showcaseSlides.map((slide, slideIndex) => {
                 const firstImageIndex = slideIndex * 2;
@@ -163,8 +163,13 @@ export function ProductShowcase() {
                 );
               })}
             </CarouselContent>
-          </Carousel>
-        </ScrollReveal>
+          </ScrollReveal>
+
+          <div className="sr-only">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
+        </Carousel>
 
         <ScrollReveal animation="fade-up" className="mt-12 text-center md:mt-16">
           <Button variant="outline" size="lg" asChild>
